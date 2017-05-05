@@ -1,6 +1,5 @@
 export default ({ children }) => (
   <div className={'enum'}>
-    <span></span>
     <div>{ children }</div>
     <style jsx>
       {`

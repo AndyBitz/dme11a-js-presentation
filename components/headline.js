@@ -12,6 +12,14 @@ export default ({ children }) => (
           margin-top: 1em;
           margin-bottom: 2em;
         }
+        h1 :global(small) {
+          color: rgba(255,255,255,.54);
+          font-size: .5em;
+          font-family: monospace;
+        }
+        h1 :global(small::before) {
+          content: ' — ';
+        }
       `}
     </style>
   </div>

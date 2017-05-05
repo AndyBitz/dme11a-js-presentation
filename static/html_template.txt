@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <meta charset="utf-8">
+  <title>js</title>
+  <style type="text/css">
+    
+  </style>
 </head>
 <body>
+
+<!-- direkt in der HTML-Datei -->
+<script type="text/javascript">
+  var text = "hello world";
+  console.log(text);
+</script>
+
+<!-- als externe Datei -->
+<script type="text/javascript" src="script.js"></script>
 
 </body>
 </html>

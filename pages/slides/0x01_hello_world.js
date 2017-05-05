@@ -1,5 +1,5 @@
-import Slide from '../components/slide.js';
-import Title from '../components/title.js';
+import Slide from '../../components/slide.js';
+import Title from '../../components/title.js';
 
 export default () => (
   <Slide>

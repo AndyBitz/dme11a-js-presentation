@@ -49,12 +49,18 @@ export default class extends Component {
         </SyntaxHighlighter>
         <style jsx>
           {`
+            div :global(pre) {
+              max-height: 50vh;
+              overflow: auto;
+            }
             div :global(.copyText) {
               position: absolute;
               transform: translateY(-100%);
               user-select: none;
               cursor: default;
               opacity: 0;
+              font-size: .5em;
+              font-family: monospace;
               animation: copy-animation 620ms forwards ease-out;
             }
             @keyframes copy-animation {

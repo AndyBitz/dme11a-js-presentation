@@ -1,7 +1,7 @@
-import Slide from '../components/slide.js';
-import Title from '../components/title.js';
-import Headline from '../components/headline.js';
-import Enum from '../components/enum.js';
+import Slide from '../../components/slide.js';
+import Title from '../../components/title.js';
+import Headline from '../../components/headline.js';
+import Enum from '../../components/enum.js';
 
 export default () => (
   <Slide>

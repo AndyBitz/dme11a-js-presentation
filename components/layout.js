@@ -22,7 +22,6 @@ export default ({ children }) => (
           color: rgba(255,255,255,.54);
           font-family: 'Noto Sans', sans-serif;
           font-size: 26px;
-          line-height: 1.7em;
         }
         main {
           height: 100vh;
@@ -40,11 +39,9 @@ export default ({ children }) => (
           text-decoration: none;
           display: inline-block;
           color: rgba(255,255,255,.54);
-          border-bottom: 1px solid rgba(255,255,255,.54);
         }
         a:hover {
           color: rgba(255,255,255,.90);
-          border-color: rgba(255,255,255,.90);
         }
       `}
     </style>

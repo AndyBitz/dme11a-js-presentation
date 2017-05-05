@@ -1,0 +1,24 @@
+{
+  "name": "dme11a-js-presentation",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "andy bitz",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^2.3.1",
+    "node-emoji": "^1.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-syntax-highlighter": "^5.5.1",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3"
+  }
+}

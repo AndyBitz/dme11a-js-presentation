@@ -15,7 +15,7 @@ export default class Join extends Component {
     .then(request => {
       return request.json();
     }).then(name => {
-      Router.replace(`/slides/${name.currentName.name}`);
+      Router.replace(`/slides/${name.current}`);
     });
   }
 

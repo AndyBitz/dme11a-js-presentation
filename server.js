@@ -9,12 +9,12 @@ const nextHandler = nextApp.getRequestHandler();
 
 // socket.io
 io.on('connection', socket => {
-  socket.on('message', data => {
-    console.log(data);
+  socket.on('host-slide', data => {
+    socket.broadcast.emit('viewer-update', data);
   });
 });
 
-// slides
+// database
 const db = {
   slides: [
     { name: '0x01_hello_world' },
@@ -22,7 +22,7 @@ const db = {
     { name: '0x03_define' },
     { name: '0x04_call_by_reference' }
   ],
-  current: 0
+  current: '0x01_hello_world'
 };
 
 nextApp.prepare().then(() => {
@@ -33,7 +33,7 @@ nextApp.prepare().then(() => {
         res.json({ status: 200, slides: db.slides });
         return;
       case 'current.json':
-        res.json({ status: 200, current: db.current, currentName: db.slides[db.current] });
+        res.json({ status: 200, current: db.current });
         return;
       default:
         res.json({ status: 404 });

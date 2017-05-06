@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Head from 'next/head';
 import io from 'socket.io-client';
+import Router from 'next/router';
 
 export default class Layout extends Component {
   constructor(props) {
@@ -11,6 +12,11 @@ export default class Layout extends Component {
   componentDidMount() {
     if (!window.socket) {
       window.socket = io('http://localhost:3000');
+      window.socket.on('viewer-update', data => {
+        if (window.role === 'VIEWER') {
+          Router.replace(data.url);
+        }
+      });
     }
     if (!window.role) {
       window.role = 'VISITOR';

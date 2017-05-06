@@ -1,10 +1,21 @@
 import { Component } from 'react';
 import Head from 'next/head';
+import io from 'socket.io-client';
 
 export default class Layout extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+  }
+
+  componentDidMount() {
+    if (!window.socket) {
+      window.socket = io('http://localhost:3000');
+    }
+  }
+
+  componentWillUnmount() {
+
   }
 
   render() {

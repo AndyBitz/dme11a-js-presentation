@@ -12,6 +12,9 @@ export default class Layout extends Component {
     if (!window.socket) {
       window.socket = io('http://localhost:3000');
     }
+    if (!window.role) {
+      window.role = 'VISITOR';
+    }
   }
 
   componentWillUnmount() {

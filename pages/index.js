@@ -6,8 +6,13 @@ import Link from 'next/link';
 import Slide from '../components/slide.js';
 
 export default class Home extends Component {
-  // TODO
-  // set state to visitor
+  
+  componentDidMount() {
+    if (window.role !== 'HOST') {
+      window.role = 'VISITOR';
+    }
+  }
+
   render () {
     return (
       <Slide className={'article'}>

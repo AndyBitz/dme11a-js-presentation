@@ -9,7 +9,6 @@ const nextHandler = nextApp.getRequestHandler();
 
 // socket.io
 io.on('connection', socket => {
-  console.log('new connection');
   socket.on('message', data => {
     console.log(data);
   });
@@ -34,7 +33,7 @@ nextApp.prepare().then(() => {
         res.json({ status: 200, slides: db.slides });
         return;
       case 'current.json':
-        res.json({ status: 200, current: db.current });
+        res.json({ status: 200, current: db.current, currentName: db.slides[db.current] });
         return;
       default:
         res.json({ status: 404 });

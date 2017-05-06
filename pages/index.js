@@ -6,12 +6,14 @@ import Link from 'next/link';
 import Slide from '../components/slide.js';
 
 export default class Home extends Component {
+  // TODO
+  // set state to visitor
   render () {
     return (
       <Slide className={'article'}>
         <Link href="/join"><a>Join</a></Link>
         <Link href="/overview"><a>Overview</a></Link>
-        <a href="#">Source</a>
+        <a href="https://github.com/AndyBitz/dme11a-js-presentation" target="_blank">Source</a>
         <style>
           {`
             article {

@@ -10,6 +10,8 @@ export default class Slide extends Component {
   }
 
   render() {
+    // TODO
+    // buttons to change slides
     return (
       <Layout>
         <article>

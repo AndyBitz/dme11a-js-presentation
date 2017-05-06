@@ -1,24 +1,24 @@
 import { Component } from 'react';
-import fetch from 'isomorphic-fetch';
 import Link from 'next/link';
+import fetch from 'isomorphic-fetch';
 
 import Slide from '../components/slide.js';
 import Headline from '../components/headline.js';
 
 export default class Overview extends Component {
+  static async getInitialProps() {
+    const request = await fetch('http://localhost:3000/api/slides.json');
+    const slides = await request.json();
+    return { slides: slides.slides };
+  }
+
   constructor(props) {
     super(props);
     this.props = props;
-    this.slides = [
-      { name: '0x01_hello_world' },
-      { name: '0x02_struct' },
-      { name: '0x03_define' },
-      { name: '0x04_call_by_reference' },
-    ];
   }
 
   prepareList() {
-    return this.slides.map((slide, index) => {
+    return this.props.slides.map((slide, index) => {
       slide.key = index;
       return (<li key={slide.key}><Link href={`/slides/${slide.name}`}><a>{slide.name}</a></Link></li>);
     });

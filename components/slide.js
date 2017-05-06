@@ -13,7 +13,7 @@ export default class Slide extends Component {
 
   render() {
     // TODO
-    // buttons to change slides
+    // emoji factory
     return (
       <Layout>
         <article>

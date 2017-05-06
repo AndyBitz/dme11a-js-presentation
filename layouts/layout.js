@@ -23,10 +23,6 @@ export default class Layout extends Component {
     }
   }
 
-  componentWillUnmount() {
-
-  }
-
   render() {
     return (
       <main>

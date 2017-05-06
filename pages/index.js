@@ -5,18 +5,22 @@ import Link from 'next/link';
 
 import Slide from '../components/slide.js';
 
-
-export default class HomePage extends Component {
+export default class Home extends Component {
   render () {
     return (
-      <Slide>
-        <Link href="index"><a>Join</a></Link>
-        <Link href="slides"><a>Slides</a></Link>
-        <Link href="index"><a>Host</a></Link>
-        <style jsx>
+      <Slide className={'article'}>
+        <Link href="/join"><a>Join</a></Link>
+        <Link href="/overview"><a>Overview</a></Link>
+        <a href="#">Source</a>
+        <style>
           {`
             article {
-              display: block;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            a {
+              margin: 0 8px;
             }
           `}
         </style>

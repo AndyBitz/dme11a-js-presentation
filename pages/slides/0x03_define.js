@@ -4,11 +4,11 @@ import Headline from '../../components/headline.js';
 import Enum from '../../components/enum.js';
 
 export default () => (
-  <Slide>
+  <Slide next={'/slides/0x04_call_by_reference'} prev={'/slides/0x02_struct'}>
     <Title>0x03_define</Title>
     <Headline>Was ist JavaScript</Headline>
     <Enum>Wurde von Netscape entwickelt</Enum>
-    <Enum>Eine interpretierte Skriptsprache</Enum>
+    <Enum>Ist eine interpretierte Skriptsprache</Enum>
     <Enum>
       Wird für viele Bereiche genutzt
       <p>z.B.&nbsp;

@@ -51,6 +51,7 @@ export default class extends Component {
           {`
             div :global(pre) {
               max-height: 50vh;
+              margin-top: 0;
               overflow: auto;
             }
             div :global(.copyText) {
@@ -61,7 +62,7 @@ export default class extends Component {
               opacity: 0;
               font-size: .5em;
               font-family: monospace;
-              animation: copy-animation 620ms forwards ease-out;
+              animation: copy-animation 840ms forwards ease-out;
             }
             @keyframes copy-animation {
               0% {

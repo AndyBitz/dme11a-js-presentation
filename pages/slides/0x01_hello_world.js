@@ -2,8 +2,8 @@ import Slide from '../../components/slide.js';
 import Title from '../../components/title.js';
 
 export default () => (
-  <Slide>
-    <Title>{ '0x0_hello_world' }</Title>
+  <Slide next={'/slides/0x02_struct'} prev={'/'}>
+    <Title>{ '0x01_hello_world' }</Title>
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 630">
         <rect width="630" height="630" fill="#f7df1e" />
@@ -14,7 +14,8 @@ export default () => (
     <style>
       {`
         article {
-          justify-content: center!important;
+          display: flex;
+          justify-content: center;
           align-items: center;
         }
         svg {

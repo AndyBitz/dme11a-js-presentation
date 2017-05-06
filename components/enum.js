@@ -1,14 +1,8 @@
 export default ({ children }) => (
-  <div className={'enum'}>
-    <div>{ children }</div>
+  <div>
+    { children }
     <style jsx>
       {`
-        .enum {
-          margin-top: .8em;
-          margin-bottom: 1em;
-          display: flex;
-          flex-basis: 100%;
-        }
         span::before {
           content: '—';
           display: inline-block;
@@ -16,12 +10,10 @@ export default ({ children }) => (
         }
         div {
           font-size: 1.2em;
+          margin-bottom: 1.4em;
         }
         div :global(p) {
           font-size: .7em;
-        }
-        div :global(p:first-child) {
-          margin-top: .7em;
         }
       `}
     </style>

@@ -10,10 +10,9 @@ export default class Join extends Component {
   }
 
   componentDidMount() {
-    if (window) {
-      window.role = 'VIEWER';
-      Router.push('/slides/0x01_hello_world');
-    }
+    // TODO
+    // set state to viewer
+    Router.replace('/slides/0x01_hello_world');
   }
 
   render() {

@@ -5,10 +5,7 @@ import { monokai } from 'react-syntax-highlighter/dist/styles';
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.props = {
-      language: props.language || 'javascript',
-      children: props.children
-    };
+    this.props = props;
     this.onClickHandler = this.onClickHandler.bind(this);
   }
 

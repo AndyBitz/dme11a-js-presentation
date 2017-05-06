@@ -8,7 +8,6 @@ import Slide from '../components/slide.js';
 export default class Home extends Component {
 
   componentDidMount() {
-    console.log('back to visitor');
     if (window) {
       window.role === 'VISITOR';
     }

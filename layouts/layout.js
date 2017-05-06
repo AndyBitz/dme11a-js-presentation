@@ -7,14 +7,6 @@ export default class Layout extends Component {
     this.props = props;
   }
 
-  componentDidMount() {
-    if (window) {
-      if (!window.role) {
-        window.role = 'VISITOR';
-      }
-    }
-  }
-
   render() {
     return (
       <main>

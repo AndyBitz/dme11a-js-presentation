@@ -11,7 +11,6 @@ export default class Slide extends Component {
   }
 
   handleClick(e) {
-    if (window.role === 'VIEWER') return;
     if (e.pageX > document.body.clientWidth/2) {
       // next slide
       (this.props.next) ? Router.push(this.props.next) : null;

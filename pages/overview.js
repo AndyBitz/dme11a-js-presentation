@@ -10,11 +10,11 @@ export default class Overview extends Component {
     super(props);
     this.props = props;
     this.slides = [
-        { name: '0x01_hello_world' },
-        { name: '0x02_struct' },
-        { name: '0x03_define' },
-        { name: '0x04_call_by_reference' },
-      ];
+      { name: '0x01_hello_world' },
+      { name: '0x02_struct' },
+      { name: '0x03_define' },
+      { name: '0x04_call_by_reference' },
+    ];
   }
 
   prepareList() {

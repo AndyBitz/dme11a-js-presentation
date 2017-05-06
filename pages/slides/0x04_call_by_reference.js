@@ -15,9 +15,14 @@ export default class extends Component {
     return { htmlCode };
   }
 
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
   render() {
     return (
-      <Slide next={'/'} prev={'/0x03_define'}>
+      <Slide next={'/'} prev={'/slides/0x03_define'}>
         <Title>0x04_call_by_reference</Title>
         <Headline>Anwendung im Browser</Headline>
         <Column>

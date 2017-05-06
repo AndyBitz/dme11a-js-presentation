@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "dev": "node server.js",
+    "build": "next build"
   },
   "keywords": [],
   "author": "andy bitz",

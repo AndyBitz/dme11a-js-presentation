@@ -1,29 +1,23 @@
 import { Component } from 'react';
 import Head from 'next/head';
-import io from 'socket.io-client';
 
 export default class Layout extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.handleKey = this.handleKey.bind(this);
   }
 
   componentDidMount() {
-    this.socket = io('http://localhost:3000/');
-    this.socket.on('fromHost', data => {
-      alert('from host');
-      console.log(data);
-    });
-  }
-
-  handleKey(event) {
-    
+    if (window) {
+      if (!window.role) {
+        window.role = 'VISITOR';
+      }
+    }
   }
 
   render() {
     return (
-      <main onClick={this.handleKey} onContextMenu={this.handleKey}>
+      <main>
         <Head>
           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i" rel="stylesheet" />
         </Head>

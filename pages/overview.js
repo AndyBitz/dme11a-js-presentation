@@ -20,7 +20,7 @@ export default class Overview extends Component {
   prepareList() {
     return this.props.slides.map((slide, index) => {
       slide.key = index;
-      return (<li key={slide.key}><Link href={`/slides/${slide.name}`}><a>{slide.name}</a></Link></li>);
+      return (<li key={slide.key}><Link href={`/slides/${slide.name}`} prefetch><a>{slide.name}</a></Link></li>);
     });
   }
 

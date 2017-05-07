@@ -10,23 +10,39 @@ export default class EmojiFactory extends Component {
       emojis: []
     }
     this.pushEmoji = this.pushEmoji.bind(this);
+    this.socketCallback = this.socketCallback.bind(this);
+    this.makeSocketAvail = this.makeSocketAvail.bind(this);
   }
 
   componentDidMount() {
-    if (window.socket) {
-      window.socket.on('fire-emoji', data => {
-        this.pushEmoji();
-      });
-    }
-    // setInterval(() => {
-    //   this.pushEmoji();
-    // }, 4000);
+    this.makeSocketAvail();
   }
 
-  pushEmoji() {
+  makeSocketAvail() {
+    this.intv = setInterval(() => {
+      if (window.socket) {
+        window.socket.on('host-emoji-update', this.socketCallback.bind(this));
+        clearInterval(this.intv);
+      }
+    }, 200);
+  }
+
+  componentWillUnmount() {
+    if (this.intv) {
+      clearInterval(this.intv);
+    }
+  }
+
+  socketCallback(data) {
+    if (window.role === 'HOST') {
+      this.pushEmoji(data.name);
+    }
+  }
+
+  pushEmoji(name) {
     this.setState(state => {
       const newEmojis = state.emojis.slice(-20);
-      newEmojis.push(<Emoji name="heart" key={new Date().getTime()}/>);
+      newEmojis.push(<Emoji name={name} key={new Date().getTime()}/>);
       state.emojis = newEmojis;
       return  state;
     });

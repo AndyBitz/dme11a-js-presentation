@@ -29,6 +29,7 @@ export default class Layout extends Component {
         <Head>
           <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i" rel="stylesheet" />
         </Head>
+        { this.props.children }
         <style jsx global>
           {`
             * {
@@ -77,7 +78,6 @@ export default class Layout extends Component {
             }
           `}
         </style>
-        { this.props.children }
       </main>
     );
   }

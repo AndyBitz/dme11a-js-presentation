@@ -12,6 +12,9 @@ io.on('connection', socket => {
   socket.on('host-slide', data => {
     socket.broadcast.emit('viewer-update', data);
   });
+  socket.on('viewer-emoji', data => {
+    io.emit('host-emoji-update', data);
+  });
 });
 
 // database

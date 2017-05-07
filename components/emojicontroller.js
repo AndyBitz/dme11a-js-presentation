@@ -7,7 +7,14 @@ export default class EmojiController extends Component {
     this.props = props;
 
     this.handleClick = this.handleClick.bind(this);
-    this.heartClick = this.heartClick.bind(this);
+
+    this.emojis = [
+      'heart',
+      'heart_eyes',
+      'neutral_face',
+      'nerd_face',
+      'blush'
+    ]
   }
 
   handleClick(data) {
@@ -16,29 +23,42 @@ export default class EmojiController extends Component {
     }
   }
 
-  heartClick() {
-    this.handleClick({ name: 'heart' });
-  }
-
   render() {
     return (
       <div>
-        <span onClick={this.heartClick} >{ emoji.get('heart') }</span>
+        {
+          this.emojis.map(emojiName => {
+            return (
+              <span
+                onClick={ () => {this.handleClick({ name: emojiName})} }
+                key={emojiName}>
+                { emoji.get(emojiName) }
+              </span>
+            );
+          })
+        }
         <style jsx>
         {`
           div {
             position: fixed;
-            bottom: 0;
-            right: 0;
-            height: 2em;
-            width: 2em;
             z-index: 100;
+            right: 1em;
+            bottom: 1em;
+            display: flex;
+            align-items: center;
           }
           span {
             cursor: pointer;
-            display: block;
+            display: inline-block;
             text-align: center;
-            font-size: 2em;
+            font-size: 1.1em;
+            width: 1em;
+            height: 1em;
+            margin: 0 8px;
+            color: #fff;
+          }
+          span:first-child {
+            transform: translateY(6px) scale(2)
           }
         `}
         </style>

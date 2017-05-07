@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import io from 'socket.io-client'
-import emoji from 'node-emoji';
 import Link from 'next/link';
 
 import Slide from '../components/slide.js';

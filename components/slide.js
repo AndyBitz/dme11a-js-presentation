@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Layout from '../layouts/layout.js';
 import Buttons from '../components/buttons.js';
+import EmojiFactory from '../components/emojifactory.js';
 
 export default class Slide extends Component {
   constructor(props) {
@@ -12,8 +13,6 @@ export default class Slide extends Component {
   }
 
   render() {
-    // TODO
-    // emoji factory
     return (
       <Layout>
         <article>
@@ -28,10 +27,13 @@ export default class Slide extends Component {
               article {
                 width: 100%;
                 height: 100%;
+                position: relative;
+                z-index: 10;
               }
             `}
           </style>
         </article>
+        <EmojiFactory />
       </Layout>
     );
   }

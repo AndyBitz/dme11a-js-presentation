@@ -18,6 +18,7 @@
     "node-emoji": "^1.5.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-motion": "^0.5.0",
     "react-syntax-highlighter": "^5.5.1",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3"

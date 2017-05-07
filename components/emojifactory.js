@@ -12,9 +12,11 @@ export default class EmojiFactory extends Component {
     this.pushEmoji = this.pushEmoji.bind(this);
     this.socketCallback = this.socketCallback.bind(this);
     this.makeSocketAvail = this.makeSocketAvail.bind(this);
+    this.didMount = false;
   }
 
   componentDidMount() {
+    this.didMount = true;
     this.makeSocketAvail();
   }
 
@@ -40,6 +42,7 @@ export default class EmojiFactory extends Component {
   }
 
   pushEmoji(name) {
+    if (!this.didmount) true;
     this.setState(state => {
       const newEmojis = state.emojis.slice(-20);
       newEmojis.push(<Emoji name={name} key={new Date().getTime()}/>);

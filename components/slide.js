@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Layout from '../layouts/layout.js';
 import Buttons from '../components/buttons.js';
 import EmojiFactory from '../components/emojifactory.js';
+import EmojiController from '../components/emojicontroller';
 
 export default class Slide extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class Slide extends Component {
           </style>
         </article>
         <EmojiFactory />
+        <EmojiController />
       </Layout>
     );
   }

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Router from 'next/router';
 
+import Page from '../layouts/page.js';
 import Slide from '../components/slide.js';
 
 export default class Join extends Component {
@@ -21,9 +22,11 @@ export default class Join extends Component {
 
   render() {
     return (
-      <Slide>
-        joining ...
-      </Slide>
+      <Page>
+        <Slide>
+          joining ...
+        </Slide>
+      </Page>
     );
   }
 }

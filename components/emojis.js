@@ -24,8 +24,8 @@ class Emojis extends Component {
   componentDidMount() {
     if (!this.props.socket) return;
     this.props.socket.on('host-emoji-update', data => {
+      console.log('got emoji from server');
       this.setState(state => {
-        console.log(state);
         const newEmojis = state.activeEmojis.slice(-20);
         newEmojis.push(<Emoji name={data.name} key={new Date().getTime()}/>);
         state.activeEmojis = newEmojis;
@@ -35,6 +35,7 @@ class Emojis extends Component {
   }
 
   clickHandler(emoji) {
+    console.log(this.props.socket);
     if (!this.props.socket) return;
     this.props.socket.emit('viewer-emoji', { name: emoji });
   }
@@ -52,12 +53,7 @@ class Emojis extends Component {
         <style jsx>
           {`
             .emoji {
-              position: fixed;
-              z-index: 0;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              right: 0;              
+              overflow: visible;
             }
           `}
         </style>

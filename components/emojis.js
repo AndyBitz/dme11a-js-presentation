@@ -24,7 +24,6 @@ class Emojis extends Component {
   componentDidMount() {
     if (!this.props.socket) return;
     this.props.socket.on('host-emoji-update', data => {
-      console.log('got emoji from server');
       this.setState(state => {
         const newEmojis = state.activeEmojis.slice(-20);
         newEmojis.push(<Emoji name={data.name} key={new Date().getTime()}/>);
@@ -35,7 +34,6 @@ class Emojis extends Component {
   }
 
   clickHandler(emoji) {
-    console.log(this.props.socket);
     if (!this.props.socket) return;
     this.props.socket.emit('viewer-emoji', { name: emoji });
   }

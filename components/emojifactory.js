@@ -1,7 +1,6 @@
 export default ({ activeEmojis }) => (
   <aside>
     { activeEmojis.map(emoji => {
-      console.log(emoji);
       return emoji;
     }) }
     <style jsx>

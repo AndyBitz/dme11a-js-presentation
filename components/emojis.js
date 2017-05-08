@@ -2,11 +2,15 @@ import { Component } from 'react';
 
 import EmojiFactory from '../components/emojifactory.js';
 import EmojiController from '../components/emojicontroller.js';
+import Emoji from '../components/emoji.js';
 
 class Emojis extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.state = {
+      activeEmojis: []
+    };
     this.clickHandler = this.clickHandler.bind(this);
     this.emojiList = [
       'heart',
@@ -18,25 +22,29 @@ class Emojis extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (!this.props.socket) return;
     this.props.socket.on('host-emoji-update', data => {
-      console.log('got emoji');
-      // add emoji to state
+      this.setState(state => {
+        console.log(state);
+        const newEmojis = state.activeEmojis.slice(-20);
+        newEmojis.push(<Emoji name={data.name} key={new Date().getTime()}/>);
+        state.activeEmojis = newEmojis;
+        return state;
+      });
     });
   }
 
   clickHandler(emoji) {
-    console.log('emit emoji');
     if (!this.props.socket) return;
-    console.log('socket is avail');
     this.props.socket.emit('viewer-emoji', { name: emoji });
   }
 
   render() {
     return (
       <div className="emoji">
-        <EmojiFactory />
+        <EmojiFactory
+          activeEmojis={this.state.activeEmojis}
+        />
         <EmojiController
           clickHandler={this.clickHandler}
           emojiList={this.emojiList}
@@ -44,8 +52,12 @@ class Emojis extends Component {
         <style jsx>
           {`
             .emoji {
-              position: relative;
+              position: fixed;
               z-index: 0;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;              
             }
           `}
         </style>

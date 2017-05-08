@@ -64,8 +64,8 @@ class Overview extends Component {
               }
             `}
           </style>
-          <Emojis />
         </Slide>
+        <Emojis />
       </Page>
     );
   }

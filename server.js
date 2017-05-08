@@ -13,7 +13,6 @@ io.on('connection', socket => {
     socket.broadcast.emit('viewer-update', data);
   });
   socket.on('viewer-emoji', data => {
-    console.log('got emoji from viewer');
     io.emit('host-emoji-update', data);
   });
 });

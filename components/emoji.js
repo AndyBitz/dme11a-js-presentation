@@ -24,7 +24,7 @@ export default class Emoji extends Component {
   componentWillMount() {
     this.defaultStyle = this.getRandomDefault();
     this.nextStyle = {
-      x: spring(this.defaultStyle.x), // Math.random()*500+200
+      x: spring(this.defaultStyle.x),
       y: spring(this.defaultStyle.y + Math.round(Math.random()*-getMaxHeight())),
       opacity: .8
     };

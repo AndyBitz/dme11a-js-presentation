@@ -1,32 +1,42 @@
 import { Component } from 'react';
-import Router from 'next/router';
+import io from 'socket.io-client';
+import Link from 'next/link';
 
 import Page from '../layouts/page.js';
 import Slide from '../components/slide.js';
 
-export default class Join extends Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
+class Join extends Component {
+  static async getInitialProps() {
+    return {};
   }
 
   componentDidMount() {
-    window.role = 'VIEWER';
-    fetch('http://localhost:3000/api/current.json')
-    .then(request => {
-      return request.json();
-    }).then(name => {
-      Router.replace(`/slides/${name.current}`);
-    });
+    // role
+    if (!window.role) {
+      window.role = 'VISITOR';
+    } else if (window.role !== 'HOST') {
+      window.role = 'VISITOR';
+    }
+    // socket
+    if (!window.socket) {
+      window.socket = io('http://localhost:3000');
+      window.socket.on('viewer-update', data => {
+        if (window.role === 'VIEWER') {
+          Router.replace(data.url);
+        }
+      });
+    }
   }
 
-  render() {
+  render () {
     return (
       <Page>
         <Slide>
-          joining ...
+          joining...
         </Slide>
       </Page>
     );
   }
 }
+
+export default Join;

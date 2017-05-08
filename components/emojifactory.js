@@ -52,9 +52,7 @@ export default class EmojiFactory extends Component {
   render() {
     return (
       <aside>
-        { this.state.emojis.map(emoji => {
-          return emoji;
-        }) }
+        { this.state.emojis.map(emoji => emoji) }
         <style jsx>
           {`
             aside {

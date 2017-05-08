@@ -11,6 +11,14 @@
   "keywords": [],
   "author": "andy bitz",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      "inline-react-svg"
+    ]
+  },
   "dependencies": {
     "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
@@ -22,5 +30,8 @@
     "react-syntax-highlighter": "^5.5.1",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-react-svg": "^0.4.0"
   }
 }

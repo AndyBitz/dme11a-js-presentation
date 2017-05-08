@@ -8,10 +8,10 @@ export default ({ next, prev }) => {
    
   return (
     <div>
-      <a onClick={ () => Router.push(next) }>
+      <a onClick={ () => Router.push(prev) }>
         <LeftArrow />
       </a>
-      <a onClick={ () => Router.push(prev) }>
+      <a onClick={ () => Router.push(next) }>
         <RightArrow />
       </a>
       <style jsx>

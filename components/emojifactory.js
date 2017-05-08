@@ -12,11 +12,9 @@ export default class EmojiFactory extends Component {
     this.pushEmoji = this.pushEmoji.bind(this);
     this.socketCallback = this.socketCallback.bind(this);
     this.makeSocketAvail = this.makeSocketAvail.bind(this);
-    this.didMount = false;
   }
 
   componentDidMount() {
-    this.didMount = true;
     this.makeSocketAvail();
   }
 

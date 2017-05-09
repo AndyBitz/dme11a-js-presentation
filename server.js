@@ -7,16 +7,6 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
-// socket.io
-io.on('connection', socket => {
-  socket.on('host-slide', data => {
-    socket.broadcast.emit('viewer-update', data);
-  });
-  socket.on('viewer-emoji', data => {
-    io.emit('host-emoji-update', data);
-  });
-});
-
 // database
 const db = {
   slides: [
@@ -27,6 +17,17 @@ const db = {
   ],
   current: '0x01_hello_world'
 };
+
+// socket.io
+io.on('connection', socket => {
+  socket.on('host-slide', data => {
+    db.current = (data.url != '/') ? data.url : db.slides[0].name ;
+    socket.broadcast.emit('viewer-update', data);
+  });
+  socket.on('viewer-emoji', data => {
+    io.emit('host-emoji-update', data);
+  });
+});
 
 nextApp.prepare().then(() => {
   app.get(/api\/(.*)/, (req, res) => {

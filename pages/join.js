@@ -9,6 +9,15 @@ class Join extends Component {
   static async getInitialProps() {
     return {};
   }
+  
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {
+      socket: undefined
+    };
+    this.emojiModule = this.emojiModule.bind(this);
+  }
 
   componentDidMount() {
     // role
@@ -18,14 +27,19 @@ class Join extends Component {
       window.role = 'VISITOR';
     }
     // socket
-    if (!window.socket) {
-      window.socket = io('http://localhost:3000');
-      window.socket.on('viewer-update', data => {
+    if (!this.state.socket) {
+      const socket = io('http://localhost:3000');
+      socket.on('viewer-update', data => {
         if (window.role === 'VIEWER') {
           Router.replace(data.url);
         }
       });
+      this.setState(state => ( {socket: socket} ));
     }
+  }
+
+  componentWillUnmount() {
+    this.state.socket.close();
   }
 
   render () {

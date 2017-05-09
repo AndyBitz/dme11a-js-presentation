@@ -40,6 +40,10 @@ class Home extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.state.socket.close();
+  }
+
   emojiModule() {
     if (!this.state.socket) return null;
     return (

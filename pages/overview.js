@@ -9,12 +9,6 @@ import Headline from '../components/headline.js';
 import Emojis from '../components/emojis.js';
 
 class Overview extends Component {
-  static async getInitialProps() {
-    const request = await fetch('http://localhost:3000/api/slides.json');
-    const slides = await request.json();
-    return { slides: slides.slides };
-  }
-
   constructor(props) {
     super(props);
     this.props = props;
@@ -23,6 +17,13 @@ class Overview extends Component {
     };
     this.emojiModule = this.emojiModule.bind(this);
   }
+
+  static async getInitialProps() {
+    const request = await fetch('http://localhost:3000/api/slides.json');
+    const slides = await request.json();
+    return { slides: slides.slides };
+  }
+
 
   componentDidMount() {
     // role
@@ -41,6 +42,10 @@ class Overview extends Component {
       });
       this.setState(state => ( {socket: socket} ));
     }
+  }
+
+  componentWillUnmount() {
+    this.state.socket.close();
   }
 
   emojiModule() {

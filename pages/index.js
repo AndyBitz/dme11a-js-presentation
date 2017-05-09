@@ -7,6 +7,9 @@ import Slide from '../components/slide.js';
 import SlideNavigation from '../components/slidenavigation.js';
 import Emojis from '../components/emojis.js';
 
+import withRedux from 'next-redux-wrapper';
+import { makeStore, _changeRole } from '../components/store.js';
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -23,16 +26,12 @@ class Home extends Component {
 
   componentDidMount() {
     // role
-    if (!window.role) {
-      window.role = 'VISITOR';
-    } else if (window.role !== 'HOST') {
-      window.role = 'VISITOR';
-    }
+    this.props.changeRole('VISITOR');
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');
       socket.on('viewer-update', data => {
-        if (window.role === 'VIEWER') {
+        if (this.props.role === 'VIEWER') {
           Router.replace(data.url);
         }
       });
@@ -41,7 +40,8 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    this.state.socket.close();
+    if (this.state.socket)
+      this.state.socket.close();
   }
 
   emojiModule() {
@@ -79,4 +79,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  role: state.role
+});
+
+const mapDispatchToProps = dipatch => ({
+  changeRole: role => (dispatch(_changeRole(role)))
+});
+
+export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(Home);

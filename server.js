@@ -21,7 +21,9 @@ const db = {
 // socket.io
 io.on('connection', socket => {
   socket.on('host-slide', data => {
-    db.current = (data.url != '/') ? data.url : db.slides[0].name ;
+    db.current = (data.url != '/') ? data.url : db.slides[0].name;
+    // TODO
+    // Client site does not emit as host
     socket.broadcast.emit('viewer-update', data);
   });
   socket.on('viewer-emoji', data => {

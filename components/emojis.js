@@ -15,9 +15,10 @@ class Emojis extends Component {
     this.emojiList = [
       'heart',
       'heart_eyes',
-      'neutral_face',
+      'blush',
       'nerd_face',
-      'blush'
+      'neutral_face',
+      'angry'
     ];
   }
 

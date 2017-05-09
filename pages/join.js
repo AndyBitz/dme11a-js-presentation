@@ -7,6 +7,9 @@ import fetch from 'isomorphic-fetch';
 import Page from '../layouts/page.js';
 import Slide from '../components/slide.js';
 
+import withRedux from 'next-redux-wrapper';
+import { makeStore, _changeRole } from '../components/store.js';
+
 class Join extends Component {
   static async getInitialProps() {
     const request = await fetch('http://localhost:3000/api/current.json');
@@ -24,13 +27,13 @@ class Join extends Component {
 
   componentDidMount() {
     // role
-    window.role = 'VIEWER';
+    this.props.changeRole('VIEWER');
     Router.replace(`/slides/${this.props.slide}`);
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');
       socket.on('viewer-update', data => {
-        if (window.role === 'VIEWER') {
+        if (this.props.role === 'VIEWER') {
           Router.replace(data.url);
         }
       });
@@ -39,7 +42,8 @@ class Join extends Component {
   }
 
   componentWillUnmount() {
-    this.state.socket.close();
+    if (this.state.socket)
+      this.state.socket.close();
   }
 
   render () {
@@ -53,4 +57,12 @@ class Join extends Component {
   }
 }
 
-export default Join;
+const mapStateToProps = state => ({
+  role: state.role
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeRole: role => (dispatch(_changeRole(role)))
+});
+
+export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(Join);

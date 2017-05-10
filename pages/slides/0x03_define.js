@@ -17,7 +17,6 @@ class SlideThree extends Component {
     this.state = {
       socket: undefined
     };
-    this.emojiModule = this.emojiModule.bind(this);
   }
 
   static async getInitialProps() {

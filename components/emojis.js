@@ -40,6 +40,7 @@ class Emojis extends Component {
   }
 
   render() {
+    if (!this.props.socket) return null;
     return (
       <div className="emoji">
         <EmojiFactory

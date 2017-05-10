@@ -29,6 +29,7 @@ class Overview extends Component {
 
 
   componentDidMount() {
+    console.log(this.props);
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');

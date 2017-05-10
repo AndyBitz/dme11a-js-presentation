@@ -56,7 +56,7 @@ class SlideOne extends Component {
       <Page>
         <Slide next={'/slides/0x02_struct'} prev={'/'}>
           <div className="article">
-            <Title>{ '0x01_hello_world' }</Title>
+            <Title>0x01_hello_world</Title>
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 630">
                 <rect width="630" height="630" fill="#f7df1e" />

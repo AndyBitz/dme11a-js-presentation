@@ -18,7 +18,7 @@ export default ({ next, prev }) => {
         {`
           div {
             position: fixed;
-            bottom: 0;
+            bottom: 10px;
             left: 0;
             right: 0;
             height: 1.4em;
@@ -29,13 +29,15 @@ export default ({ next, prev }) => {
             width: 24px;
             display: inline-block;
             padding: 0 6px;
+            cursor: pointer;
           }
-          a:hover svg {
+          a:hover :global(svg) {
             fill: rgba(255,255,255,.9);
           }
-          svg {
+          a :global(svg) {
+            transform: translate(-7px, -2px);
             vertical-align: middle;
-            fill: rgba(255,255,255,.54);
+            fill: rgba(255,255,255,.34);
           }
         `}
       </style>

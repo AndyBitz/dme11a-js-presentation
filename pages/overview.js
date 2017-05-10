@@ -5,8 +5,8 @@ import io from 'socket.io-client';
 
 import Page from '../layouts/page.js';
 import Slide from '../components/slide.js';
-import Headline from '../components/headline.js';
 import Emojis from '../components/emojis.js';
+import { Headline } from '../components/text.js';
 
 import withRedux from 'next-redux-wrapper';
 import { makeStore, _changeRole } from '../components/store.js';
@@ -29,7 +29,6 @@ class Overview extends Component {
 
 
   componentDidMount() {
-    console.log(this.props);
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');

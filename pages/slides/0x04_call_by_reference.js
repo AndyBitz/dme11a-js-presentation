@@ -4,16 +4,13 @@ import fetch from 'isomorphic-fetch';
 
 import Page from '../../layouts/page.js';
 import Slide from '../../components/slide.js';
-import Title from '../../components/title.js';
-import Headline from '../../components/headline.js';
-import Enum from '../../components/enum.js';
 import Code from '../../components/code.js'
-import Column from '../../components/column.js';
 import Emojis from '../../components/emojis.js';
 import SlideNavigation from '../../components/slidenavigation.js';
+import { Title, Headline, Enum, Column } from '../../components/text.js';
 
 import withRedux from 'next-redux-wrapper';
-import { makeStore, _changeRole } from '../components/store.js';
+import { makeStore, _changeRole } from '../../components/store.js';
 
 class SlideFour extends Component {
   constructor(props) {

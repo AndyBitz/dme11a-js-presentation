@@ -83,7 +83,7 @@ const mapStateToProps = state => ({
   role: state.role
 });
 
-const mapDispatchToProps = dipatch => ({
+const mapDispatchToProps = dispatch => ({
   changeRole: role => (dispatch(_changeRole(role)))
 });
 

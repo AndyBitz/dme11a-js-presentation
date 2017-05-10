@@ -3,12 +3,12 @@ import io from 'socket.io-client';
 
 import Page from '../../layouts/page.js';
 import Slide from '../../components/slide.js';
-import Title from '../../components/title.js';
 import Emojis from '../../components/emojis.js';
 import SlideNavigation from '../../components/slidenavigation.js';
+import { Title } from '../../components/text.js';
 
 import withRedux from 'next-redux-wrapper';
-import { makeStore, _changeRole } from '../components/store.js';
+import { makeStore, _changeRole } from '../../components/store.js';
 
 class SlideOne extends Component {
   constructor(props) {

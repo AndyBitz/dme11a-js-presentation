@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Router from 'next/router';
 import io from 'socket.io-client';
 
 import Page from '../../layouts/page.js';
@@ -18,6 +19,7 @@ class SlideOne extends Component {
       socket: undefined
     };
     this.emojiModule = this.emojiModule.bind(this);
+    this.navModule = this.navModule.bind(this);
   }
 
   static async getInitialProps() {
@@ -43,12 +45,26 @@ class SlideOne extends Component {
   }
 
   emojiModule() {
-    if (!this.state.socket) return null;
-    return (
-      <Emojis
-        socket={this.state.socket}
-      />
-    );
+    if (this.state.socket) {
+      return (
+        <Emojis
+          socket={this.state.socket}
+        />
+      );
+    }
+  }
+
+  navModule() {
+    if (this.state.socket && this.props.role) {
+      return (
+        <SlideNavigation
+          role={this.props.role}
+          socket={this.state.socket}
+          prev="/"
+          next="/slides/0x02_struct"
+        />
+      );
+    } 
   }
 
   render() {
@@ -65,10 +81,7 @@ class SlideOne extends Component {
               <span>JavaScript</span>
             </div>
           </div>
-          <SlideNavigation
-            prev="/"
-            next="/slides/0x02_struct"
-          />
+          { this.navModule() }
           <style jsx>
             {`
               .article {

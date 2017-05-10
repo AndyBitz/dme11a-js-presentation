@@ -15,7 +15,11 @@ const reducer = (state = {}, action) => {
 };
 
 export const makeStore = (initialState = { role: 'VISITOR' }) => {
-  return createStore(reducer, initialState);
+  return createStore(
+    reducer,
+    initialState,
+    (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || undefined
+  );
 };
 
 export const _changeRole = role => ({

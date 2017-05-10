@@ -1,4 +1,6 @@
-export default ({ children }) => (
+import Router from 'next/router';
+
+export default ({ children, socket }) => (
   <section>
     <article>
       { children }

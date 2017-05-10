@@ -48,12 +48,13 @@ class Overview extends Component {
   }
 
   emojiModule() {
-    if (!this.state.socket) return null;
-    return (
-      <Emojis
-        socket={this.state.socket}
-      />
-    );
+    if (this.state.socket) {
+      return (
+        <Emojis
+          socket={this.state.socket}
+        />
+      );
+    }
   }
 
   prepareList() {

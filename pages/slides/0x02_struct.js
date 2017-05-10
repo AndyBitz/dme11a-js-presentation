@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Router from 'next/router';
 import io from 'socket.io-client';
 
 import Page from '../../layouts/page.js';
@@ -18,6 +19,7 @@ class SlideTwo extends Component {
       socket: undefined
     };
     this.emojiModule = this.emojiModule.bind(this);
+    this.navModule = this.navModule.bind(this);
   }
 
   static async getInitialProps() {
@@ -43,28 +45,39 @@ class SlideTwo extends Component {
   }
 
   emojiModule() {
-    if (!this.state.socket) return null;
-    return (
-      <Emojis
-        socket={this.state.socket}
-      />
-    );
+    if (this.state.socket) {
+      return (
+        <Emojis
+          socket={this.state.socket}
+        />
+      );
+    }
+  }
+
+  navModule() {
+    if (this.state.socket && this.props.role) {
+      return (
+        <SlideNavigation
+          role={this.props.role}
+          socket={this.state.socket}
+          prev="/slides/0x01_hello_world"
+          next="/slides/0x03_define"
+        />
+      );
+    } 
   }
 
   render() {
     return (
       <Page>
-        <Slide next={'/slides/0x03_define'} prev={'/slides/0x01_hello_world'}>
+        <Slide>
           <Title>0x02_struct</Title>
           <Headline>Gliederung</Headline>
           <Enum>Was ist JavaScript</Enum>
           <Enum>Wo wird es verwendet</Enum>
           <Enum>Anwendung im Browser</Enum>
           <Enum>Libraries & Frameworks</Enum>
-          <SlideNavigation
-            prev="/slides/0x01_hello_world"
-            next="/slides/0x03_define"
-          />
+          { this.navModule() }
         </Slide>
         { this.emojiModule() }
       </Page>

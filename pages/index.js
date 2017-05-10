@@ -26,7 +26,8 @@ class Home extends Component {
 
   componentDidMount() {
     // role
-    this.props.changeRole('VISITOR');
+    if (this.props.role !== 'HOST')
+      this.props.changeRole('VISITOR');
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');
@@ -45,12 +46,13 @@ class Home extends Component {
   }
 
   emojiModule() {
-    if (!this.state.socket) return null;
-    return (
-      <Emojis
-        socket={this.state.socket}
-      />
-    );
+    if (this.state.socket) {
+      return (
+        <Emojis
+          socket={this.state.socket}
+        />
+      );
+    }
   }
 
   render () {

@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Router from 'next/router';
 import io from 'socket.io-client';
 import fetch from 'isomorphic-fetch';
 
@@ -20,6 +21,7 @@ class SlideFour extends Component {
       socket: undefined
     };
     this.emojiModule = this.emojiModule.bind(this);
+    this.navModule = this.navModule.bind(this);
   }
 
   static async getInitialProps() {
@@ -47,18 +49,32 @@ class SlideFour extends Component {
   }
 
   emojiModule() {
-    if (!this.state.socket) return null;
-    return (
-      <Emojis
-        socket={this.state.socket}
-      />
-    );
+    if (this.state.socket) {
+      return (
+        <Emojis
+          socket={this.state.socket}
+        />
+      );
+    }
+  }
+
+  navModule() {
+    if (this.state.socket && this.props.role) {
+      return (
+        <SlideNavigation
+          role={this.props.role}
+          socket={this.state.socket}
+          prev="/slides/0x03_define"
+          next="/"
+        />
+      );
+    } 
   }
 
   render() {
     return (
       <Page>
-        <Slide next={'/'} prev={'/slides/0x03_define'}>
+        <Slide>
           <Title>0x04_call_by_reference</Title>
           <Headline>Anwendung im Browser</Headline>
           <Column>
@@ -68,10 +84,7 @@ class SlideFour extends Component {
           <Column>
             <Code language='html'>{ this.props.htmlCode }</Code>
           </Column>
-          <SlideNavigation
-            prev="/slides/0x03_define"
-            next="/"
-          />
+          { this.navModule() }
         </Slide>
         { this.emojiModule() }
       </Page>

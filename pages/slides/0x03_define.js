@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Router from 'next/router';
 import io from 'socket.io-client';
 
 import Page from '../../layouts/page.js';
@@ -17,6 +18,8 @@ class SlideThree extends Component {
     this.state = {
       socket: undefined
     };
+    this.emojiModule = this.emojiModule.bind(this);
+    this.navModule = this.navModule.bind(this);
   }
 
   static async getInitialProps() {
@@ -42,12 +45,26 @@ class SlideThree extends Component {
   }
 
   emojiModule() {
-    if (!this.state.socket) return null;
-    return (
-      <Emojis
-        socket={this.state.socket}
-      />
-    );
+    if (this.state.socket) {
+      return (
+        <Emojis
+          socket={this.state.socket}
+        />
+      );
+    }
+  }
+
+  navModule() {
+    if (this.state.socket && this.props.role) {
+      return (
+        <SlideNavigation
+          role={this.props.role}
+          socket={this.state.socket}
+          prev="/slides/0x02_struct"
+          next="/slides/0x04_call_by_reference"
+        />
+      );
+    } 
   }
 
   render() {
@@ -66,10 +83,7 @@ class SlideThree extends Component {
             <a href="https://nodejs.org/en/" target="_blank">Serverseitige Programme,</a>&nbsp;
             <a href="https://facebook.github.io/react/" target="_blank">WebApps</a>&nbsp;...</p>
           </Enum>
-          <SlideNavigation
-            prev="/slides/0x02_struct"
-            next="/slides/0x04_call_by_reference"
-          />
+          { this.navModule() }
         </Slide>
         { this.emojiModule() }
       </Page>

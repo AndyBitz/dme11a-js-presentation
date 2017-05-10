@@ -3,15 +3,27 @@ import Router from 'next/router';
 import LeftArrow from '../components/leftArrow.svg';
 import RightArrow from '../components/rightArrow.svg';
 
-export default ({ next, prev }) => {
+export default ({ next, prev, socket, role }) => {
   if (!next || !prev) return null;
    
   return (
     <div>
-      <a onClick={ () => Router.push(prev) }>
+      <a onClick={ () => {
+        console.log('should emit');
+        console.log(socket, role);
+        if (socket && role === 'HOST')
+          socket.emit('host-slide-update', { url: prev });
+        Router.push(prev);
+      } }>
         <LeftArrow />
       </a>
-      <a onClick={ () => Router.push(next) }>
+      <a onClick={ () => {
+        console.log('should emit');
+        console.log(socket, role);
+        if (socket && role === 'HOST')
+          socket.emit('host-slide-update', { url: next });
+        Router.push(next);
+      } }>
         <RightArrow />
       </a>
       <style jsx>

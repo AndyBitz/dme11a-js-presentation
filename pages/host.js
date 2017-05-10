@@ -10,7 +10,7 @@ import Slide from '../components/slide.js';
 import withRedux from 'next-redux-wrapper';
 import { makeStore, _changeRole } from '../components/store.js';
 
-class Join extends Component {
+class Host extends Component {
   static async getInitialProps() {
     const request = await fetch('http://localhost:3000/api/current.json');
     const current = await request.json();
@@ -27,8 +27,8 @@ class Join extends Component {
 
   componentDidMount() {
     // role
-    this.props.changeRole('VIEWER');
-    Router.replace(`${this.props.slide}`);
+    this.props.changeRole('HOST');
+    Router.replace(`/slides/${this.props.slide}`);
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');
@@ -50,7 +50,7 @@ class Join extends Component {
     return (
       <Page>
         <Slide>
-          joining...
+          Hosting...
         </Slide>
       </Page>
     );
@@ -65,4 +65,4 @@ const mapDispatchToProps = dispatch => ({
   changeRole: role => (dispatch(_changeRole(role)))
 });
 
-export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(Join);
+export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(Host);

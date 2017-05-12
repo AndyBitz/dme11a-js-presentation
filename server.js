@@ -14,19 +14,18 @@ const db = {
     { name: '0x02_struct' },
     { name: '0x03_define' },
     { name: '0x04_call_by_reference' }
-  ],
-  current: '0x01_hello_world'
+  ]
 };
 
 // socket.io
 io.on('connection', socket => {
   socket.on('host-slide-update', data => {
-    console.log('slide from host');
-    console.log(data);
-    db.current = (data.url != '/') ? data.url : db.slides[0].name;
+    // emit url to viewer and replace their page
     socket.broadcast.emit('viewer-update', data);
   });
+
   socket.on('viewer-emoji', data => {
+    // emit emoji name to all
     io.emit('host-emoji-update', data);
   });
 });
@@ -37,9 +36,6 @@ nextApp.prepare().then(() => {
     switch (file) {
       case 'slides.json':
         res.json({ status: 200, slides: db.slides });
-        return;
-      case 'current.json':
-        res.json({ status: 200, current: db.current });
         return;
       default:
         res.json({ status: 404 });

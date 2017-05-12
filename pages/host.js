@@ -12,9 +12,7 @@ import { makeStore, _changeRole } from '../components/store.js';
 
 class Host extends Component {
   static async getInitialProps() {
-    const request = await fetch('http://localhost:3000/api/current.json');
-    const current = await request.json();
-    return { slide: current.current };
+    return {};
   }
 
   constructor(props) {
@@ -28,7 +26,7 @@ class Host extends Component {
   componentDidMount() {
     // role
     this.props.changeRole('HOST');
-    Router.replace(`/slides/${this.props.slide}`);
+    Router.replace(`/slides/0x01_hello_world`);
     // socket
     if (!this.state.socket) {
       const socket = io('http://localhost:3000');

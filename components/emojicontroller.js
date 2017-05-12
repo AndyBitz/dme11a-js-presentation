@@ -37,9 +37,6 @@ export default ({ clickHandler, emojiList }) => {
           margin: 0 8px;
           color: #fff;
         }
-        div :global(span:first-child) {
-          transform: translateY(6px) scale(2)
-        }
       `}
       </style>
     </div>

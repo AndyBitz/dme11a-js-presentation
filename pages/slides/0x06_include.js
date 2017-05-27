@@ -73,6 +73,15 @@ class SlideThree extends Component {
         <Slide>
           <Title>0x06_include</Title>
           <Headline>Libraries & Frameworks</Headline>
+          <Enum>Enthalten Funktionen, Algorithmen, Variablen...</Enum>
+          <Enum>
+            Bsp:
+            <a href="https://facebook.github.io/react/" target="_blank">react</a>
+            <a href="https://jquery.com/" target="_blank">jquery</a>
+            <a href="https://lodash.com/" target="_blank">lodash</a><br/>
+            <a href="http://lokeshdhakar.com/projects/lightbox2/" target="_blank">Lightbox</a>
+            <a href="https://troolee.github.io/gridstack.js/" target="_blank">Gridstack</a>
+          </Enum>
           { this.navModule() }
         </Slide>
         { this.emojiModule() }

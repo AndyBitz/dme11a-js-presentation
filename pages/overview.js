@@ -21,8 +21,11 @@ class Overview extends Component {
     this.emojiModule = this.emojiModule.bind(this);
   }
 
-  static async getInitialProps() {
-    const request = await fetch('http://localhost:3000/static/slides.json');
+  static async getInitialProps({ isServer }) {
+    let host = 'http://localhost:3000';
+    if (!isServer)      
+      host = `${location.protocol}//${location.host}`;
+    const request = await fetch(`${host}/static/slides.json`);
     const slides = await request.json();
     return { slides: slides.slides };
   }
@@ -31,7 +34,7 @@ class Overview extends Component {
     console.log(this.props);
     // socket
     if (!this.state.socket) {
-      const socket = io('http://localhost:3000');
+      const socket = io(`${location.protocol}//${location.host}/`);
       socket.on('viewer-update', data => {
         if (this.props.role === 'VIEWER') {
           Router.replace(data.url);

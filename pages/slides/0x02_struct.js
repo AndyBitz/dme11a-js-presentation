@@ -29,7 +29,7 @@ class SlideTwo extends Component {
   componentDidMount() {
     // socket
     if (!this.state.socket) {
-      const socket = io('http://localhost:3000');
+      const socket = io(`${location.protocol}//${location.host}/`);
       socket.on('viewer-update', data => {
         if (this.props.role === 'VIEWER') {
           Router.replace(data.url);

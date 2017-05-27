@@ -24,8 +24,11 @@ class SlideFour extends Component {
     this.navModule = this.navModule.bind(this);
   }
 
-  static async getInitialProps() {
-    const response = await fetch('http://localhost:3000/static/html_template.txt');
+  static async getInitialProps({ isServer }) {
+    let host = 'http://localhost:3000';
+    if (!isServer)      
+      host = `${location.protocol}//${location.host}`;
+    const response = await fetch(`${host}/static/html_template.txt`);
     const htmlCode = await response.text();
     return { htmlCode };
   }
@@ -33,7 +36,7 @@ class SlideFour extends Component {
   componentDidMount() {
     // socket
     if (!this.state.socket) {
-      const socket = io('http://localhost:3000');
+      const socket = io(`${location.protocol}//${location.host}/`);
       socket.on('viewer-update', data => {
         if (this.props.role === 'VIEWER') {
           Router.replace(data.url);

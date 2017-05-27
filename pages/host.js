@@ -29,7 +29,7 @@ class Host extends Component {
     Router.replace(`/slides/0x01_hello_world`);
     // socket
     if (!this.state.socket) {
-      const socket = io('http://localhost:3000');
+      const socket = io(`${location.protocol}//${location.host}/`);
       socket.on('viewer-update', data => {
         if (this.props.role === 'VIEWER') {
           Router.replace(data.url);

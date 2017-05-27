@@ -1,0 +1,10 @@
+{
+  "slides": [
+    { "name": "0x01_hello_world" },
+    { "name": "0x02_struct" },
+    { "name": "0x03_define" },
+    { "name": "0x04_y_tho" },
+    { "name": "0x05_call_by_reference" },
+    { "name": "0x06_include" }
+  ]
+}

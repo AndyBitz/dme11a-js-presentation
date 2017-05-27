@@ -60,8 +60,8 @@ class SlideThree extends Component {
         <SlideNavigation
           role={this.props.role}
           socket={this.state.socket}
-          prev="/slides/0x02_struct"
-          next="/slides/0x04_y_tho"
+          prev="/slides/0x05_call_by_reference"
+          next="/"
         />
       );
     } 
@@ -71,18 +71,8 @@ class SlideThree extends Component {
     return (
       <Page>
         <Slide>
-          <Title>0x03_define</Title>
-          <Headline>Was ist JavaScript</Headline>
-          <Enum>Wurde von Netscape entwickelt</Enum>
-          <Enum>Ist eine interpretierte Skriptsprache</Enum>
-          <Enum>
-            Wird für viele Bereiche genutzt
-            <p>z.B.&nbsp;
-            <a href="https://facebook.github.io/react-native/" target="_blank">Native Apps für Android, iOS,</a>&nbsp;
-            <a href="https://electron.atom.io/" target="_blank">Windows, OSX und Linux,</a>&nbsp;<br />
-            <a href="https://nodejs.org/en/" target="_blank">Serverseitige Programme,</a>&nbsp;
-            <a href="https://facebook.github.io/react/" target="_blank">WebApps</a>&nbsp;...</p>
-          </Enum>
+          <Title>0x06_include</Title>
+          <Headline>Libraries & Frameworks</Headline>
           { this.navModule() }
         </Slide>
         { this.emojiModule() }

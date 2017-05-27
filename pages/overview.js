@@ -22,11 +22,10 @@ class Overview extends Component {
   }
 
   static async getInitialProps() {
-    const request = await fetch('http://localhost:3000/api/slides.json');
+    const request = await fetch('http://localhost:3000/static/slides.json');
     const slides = await request.json();
     return { slides: slides.slides };
   }
-
 
   componentDidMount() {
     console.log(this.props);

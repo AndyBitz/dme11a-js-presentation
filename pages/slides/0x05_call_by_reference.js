@@ -1,17 +1,19 @@
 import { Component } from 'react';
 import Router from 'next/router';
 import io from 'socket.io-client';
+import fetch from 'isomorphic-fetch';
 
 import Page from '../../layouts/page.js';
 import Slide from '../../components/slide.js';
+import Code from '../../components/code.js'
 import Emojis from '../../components/emojis.js';
 import SlideNavigation from '../../components/slidenavigation.js';
-import { Title, Headline, Enum } from '../../components/text.js';
+import { Title, Headline, Enum, Column } from '../../components/text.js';
 
 import withRedux from 'next-redux-wrapper';
 import { makeStore, _changeRole } from '../../components/store.js';
 
-class SlideThree extends Component {
+class SlideFour extends Component {
   constructor(props) {
     super(props);
     this.props = props;
@@ -23,7 +25,9 @@ class SlideThree extends Component {
   }
 
   static async getInitialProps() {
-    return {};
+    const response = await fetch('http://localhost:3000/static/html_template.txt');
+    const htmlCode = await response.text();
+    return { htmlCode };
   }
 
   componentDidMount() {
@@ -60,8 +64,8 @@ class SlideThree extends Component {
         <SlideNavigation
           role={this.props.role}
           socket={this.state.socket}
-          prev="/slides/0x02_struct"
-          next="/slides/0x04_y_tho"
+          prev="/slides/0x04_y_tho"
+          next="/slides/0x06_include"
         />
       );
     } 
@@ -71,25 +75,22 @@ class SlideThree extends Component {
     return (
       <Page>
         <Slide>
-          <Title>0x03_define</Title>
-          <Headline>Was ist JavaScript</Headline>
-          <Enum>Wurde von Netscape entwickelt</Enum>
-          <Enum>Ist eine interpretierte Skriptsprache</Enum>
-          <Enum>
-            Wird für viele Bereiche genutzt
-            <p>z.B.&nbsp;
-            <a href="https://facebook.github.io/react-native/" target="_blank">Native Apps für Android, iOS,</a>&nbsp;
-            <a href="https://electron.atom.io/" target="_blank">Windows, OSX und Linux,</a>&nbsp;<br />
-            <a href="https://nodejs.org/en/" target="_blank">Serverseitige Programme,</a>&nbsp;
-            <a href="https://facebook.github.io/react/" target="_blank">WebApps</a>&nbsp;...</p>
-          </Enum>
+          <Title>0x05_call_by_reference</Title>
+          <Headline>Anwendung im Browser</Headline>
+          <Column>
+            <Enum>JavaScript kann direkt im { '<script>-Tag' } geschrieben werden</Enum>
+            <Enum>oder als externe Datei durch das src-Attribut eingebunden werden</Enum>
+          </Column>
+          <Column>
+            <Code language='html'>{ this.props.htmlCode }</Code>
+          </Column>
           { this.navModule() }
         </Slide>
         { this.emojiModule() }
       </Page>
     );
   }
-}
+};
 
 const mapStateToProps = state => ({
   role: state.role
@@ -99,4 +100,4 @@ const mapDispatchToProps = dipatch => ({
   changeRole: role => (dispatch(_changeRole(role)))
 });
 
-export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(SlideThree);
+export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(SlideFour);

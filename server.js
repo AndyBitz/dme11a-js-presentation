@@ -7,16 +7,6 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
-// database
-const db = {
-  slides: [
-    { name: '0x01_hello_world' },
-    { name: '0x02_struct' },
-    { name: '0x03_define' },
-    { name: '0x04_call_by_reference' }
-  ]
-};
-
 // socket.io
 io.on('connection', socket => {
   socket.on('host-slide-update', data => {
@@ -31,17 +21,6 @@ io.on('connection', socket => {
 });
 
 nextApp.prepare().then(() => {
-  app.get(/api\/(.*)/, (req, res) => {
-    const file = req.path.replace('/api/', '');
-    switch (file) {
-      case 'slides.json':
-        res.json({ status: 200, slides: db.slides });
-        return;
-      default:
-        res.json({ status: 404 });
-    }
-  });
-
   app.get('*', (req, res) => {
     return nextHandler(req, res);
   });

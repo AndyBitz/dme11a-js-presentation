@@ -3,10 +3,14 @@ import emoji from 'node-emoji';
 
 const emojiMenu = (clickHandler, emojiList) => (
   emojiList.map(emojiName => {
+    const sx = {
+      userSelect: 'none'
+    }
     return (
       <span
         onClick={ () => {clickHandler(emojiName)} }
-        key={emojiName}>
+        key={emojiName}
+        style={sx}>
         { emoji.get(emojiName) }
       </span>
     );
@@ -26,6 +30,7 @@ export default ({ clickHandler, emojiList }) => {
           bottom: 1em;
           display: flex;
           align-items: center;
+          user-select: none;
         }
         div :global(span) {
           cursor: pointer;

@@ -2,10 +2,18 @@ import Head from 'next/head';
 import Router from 'next/router';
 import io from 'socket.io-client';
 
-export default ({ children }) => {
+export default ({ title, children }) => {
+  if (title) {
+    title = <title>{ title }</title>
+  } else {
+    title = null
+  }
+
   return (
     <main>
       <Head>
+        { title }
+        <link rel="shortcut icon" href="/static/favicon.png" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i" rel="stylesheet" />
       </Head>
       { children }
@@ -13,6 +21,10 @@ export default ({ children }) => {
         {`
           * {
             box-sizing: border-box;
+          }
+          -moz-::selection {
+            color: #000;
+            background-color: #f7df1e;
           }
           ::selection {
             color: #000;

@@ -22,17 +22,17 @@
   "dependencies": {
     "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
-    "next": "^2.4.0",
+    "next": "^2.4.4",
     "next-redux-wrapper": "^1.1.2",
     "node-emoji": "^1.5.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-motion": "^0.5.0",
     "react-redux": "^5.0.4",
     "react-syntax-highlighter": "^5.5.1",
     "redux": "^3.6.0",
-    "socket.io": "^1.7.3",
-    "socket.io-client": "^1.7.3"
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3"
   },
   "devDependencies": {
     "babel-plugin-inline-react-svg": "^0.4.0"

@@ -57,7 +57,7 @@ class Home extends Component {
 
   render () {
     return (
-      <Page>
+      <Page title="js / home">
         <Slide className={'article'}>
           <Link href="/join"><a>Join</a></Link>
           <Link href="/overview"><a>Overview</a></Link>

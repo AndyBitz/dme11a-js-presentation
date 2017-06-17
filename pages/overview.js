@@ -68,7 +68,7 @@ class Overview extends Component {
 
   render() {
     return (
-      <Page>
+      <Page title="js / overview">
         <Slide>
           <Headline>Übersicht</Headline>
           <ul>{ this.prepareList() }</ul>

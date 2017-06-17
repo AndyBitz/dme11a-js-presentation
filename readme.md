@@ -31,13 +31,13 @@ and then build, start and host it.
 ## usage 
 
 The host of the presentation can go to `/host`.
-Every user who went on `/join` will now see the same slide as the host.
-The project is written in pure javascript and uses the framework [next.js](https://github.com/zeit/next.js).
+Every user who went on `/join` will then see the same slide as the host.
+The project is written in javascript and uses the framework [next.js](https://github.com/zeit/next.js).
 New slides are added to the `/pages/slides` folder. In addition the slide needs to be added to the `slides.json` file in `/static/`.
 
 
 ## infos
 
-made with [next.js](https://github.com/zeit/next.js) :rocket:
+:rocket: made with [next.js](https://github.com/zeit/next.js)
 
 

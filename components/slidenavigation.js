@@ -1,7 +1,7 @@
 import Router from 'next/router';
 
-import LeftArrow from '../components/leftArrow.svg';
-import RightArrow from '../components/rightArrow.svg';
+import LeftArrow from '../components/leftArrow';
+import RightArrow from '../components/rightArrow';
 
 export default ({ next, prev, socket, role }) => {
   if (!next || !prev) return null;

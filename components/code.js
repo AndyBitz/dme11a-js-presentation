@@ -1,6 +1,6 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { Component } from 'react';
-import { monokai } from 'react-syntax-highlighter/dist/styles';
+import { monokai } from 'react-syntax-highlighter/dist/styles/hljs';
 
 export default class extends Component {
   constructor(props) {
